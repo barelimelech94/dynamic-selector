@@ -18,7 +18,7 @@ const ExampleMultiSelectListboxDynamicSelector: React.FC<
     const [loading, setLoading] = useState(false);
     const [hasMore, setHasMore] = useState(true);
 
-    const debouncedSearchTerm = useDebounce(searchTerm, DEBOUNCE_DELAY);
+    const debouncedSearchTerm = useDebounce(searchTerm.trim(), DEBOUNCE_DELAY);
 
     // 1. Load initial pre-selected items, store their order
     useEffect(() => {
@@ -61,7 +61,7 @@ const ExampleMultiSelectListboxDynamicSelector: React.FC<
 
     // Reset search on new term
     useEffect(() => {
-        if (debouncedSearchTerm.trim() === '') {
+        if (debouncedSearchTerm === '') {
             setItems([]);
             return;
         }
