@@ -61,6 +61,10 @@ const ExampleMultiSelectListboxDynamicSelector: React.FC<
 
     // Reset search on new term
     useEffect(() => {
+        if (debouncedSearchTerm.trim() === '') {
+            setItems([]);
+            return;
+        }
         console.log('Search term changed:', debouncedSearchTerm);
         setItems([]);
         setPage(0);
