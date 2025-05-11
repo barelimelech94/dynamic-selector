@@ -67,16 +67,13 @@ const ExampleMultiSelectListboxDynamicSelector: React.FC<
         fetchItems(debouncedSearchTerm, 0, false);
     }, [debouncedSearchTerm, fetchItems]);
 
-    // Load more on pagination
-    useEffect(() => {
-        console.log('Page changed:', page);
-        if (page > 0) {
-            fetchItems(debouncedSearchTerm, page, true);
-        }
-    }, [page, debouncedSearchTerm, fetchItems]);
-
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value);
+    };
+    const handleShowMoreClick = () => {
+        console.log('Show More called with page: ', page + 1);
+        fetchItems(debouncedSearchTerm, page + 1, true);
+        setPage((prev) => prev + 1);
     };
 
     const toggleSelection = useCallback((value: string) => {
@@ -91,7 +88,7 @@ const ExampleMultiSelectListboxDynamicSelector: React.FC<
         });
     }, []);
 
-    // Always keep initial items at top in original order
+    // Always keep initial items at top in original order (Assumption)
     const combinedItems = useMemo(() => {
         const selectedSet = new Set(initialSelectedItems.map((i) => i.value));
         const filteredItems = items.filter((i) => !selectedSet.has(i.value));
@@ -113,11 +110,7 @@ const ExampleMultiSelectListboxDynamicSelector: React.FC<
             {loading ? (
                 <LoadingIndicator />
             ) : (
-                <button
-                    className="show-more-btn"
-                    onClick={() => setPage((p) => p + 1)}
-                    disabled={!hasMore}
-                >
+                <button className="show-more-btn" onClick={handleShowMoreClick} disabled={!hasMore}>
                     Show More
                 </button>
             )}
