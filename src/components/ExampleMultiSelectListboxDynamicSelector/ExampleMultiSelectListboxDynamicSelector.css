@@ -29,3 +29,9 @@
     color: var(--primary-color);
     font-weight: bold;
 }
+
+.error-message {
+    color: red;
+    margin: 8px 0;
+    font-weight: bold;
+}

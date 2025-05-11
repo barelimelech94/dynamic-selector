@@ -17,6 +17,7 @@ const ExampleMultiSelectListboxDynamicSelector: React.FC<
     const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
     const [loading, setLoading] = useState(false);
     const [hasMore, setHasMore] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
     const debouncedSearchTerm = useDebounce(searchTerm.trim(), DEBOUNCE_DELAY);
 
@@ -24,6 +25,7 @@ const ExampleMultiSelectListboxDynamicSelector: React.FC<
     useEffect(() => {
         const fetchInitialItems = async () => {
             try {
+                setError(null);
                 setLoading(true);
                 const result = await getItemsById(initialSelectedIds);
                 const selectedItems = initialSelectedIds
@@ -33,6 +35,7 @@ const ExampleMultiSelectListboxDynamicSelector: React.FC<
                 setSelectedIds(new Set(initialSelectedIds));
             } catch (error) {
                 console.error('Error loading items:', error);
+                setError('Failed to load initial items.');
             } finally {
                 setLoading(false);
             }
@@ -45,6 +48,7 @@ const ExampleMultiSelectListboxDynamicSelector: React.FC<
     const fetchItems = useCallback(
         async (term: string, pageNum: number, append = false) => {
             try {
+                setError(null);
                 setLoading(true);
                 const result = await searchItems(term, pageNum);
                 const deduped = result.filter((item) => !initialSelectedIds.includes(item.value));
@@ -52,6 +56,7 @@ const ExampleMultiSelectListboxDynamicSelector: React.FC<
                 setHasMore(result.length === PAGE_SIZE);
             } catch (error) {
                 console.error('Error fetching items:', error);
+                setError('Failed to fetch search results.');
             } finally {
                 setLoading(false);
             }
@@ -106,6 +111,7 @@ const ExampleMultiSelectListboxDynamicSelector: React.FC<
             <h1 className="dynamic-selector-title">Dynamic Selector</h1>
 
             <SearchBox value={searchTerm} onChange={handleSearchChange} />
+            {error && <div className="error-message">{error}</div>}
             <ResultsBox
                 items={combinedItems}
                 isItemSelected={isItemSelected}
