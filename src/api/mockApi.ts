@@ -1,8 +1,8 @@
-import type { Item } from '../utils/itemTypes';
-import { PAGE_SIZE, MOCK_ITEMS } from '../utils/config';
+import type { Item } from '../utils/types.ts';
+import { PAGE_SIZE, MOCK_ITEMS } from '../utils/config.ts';
 
 export const mockSearchItems = async (searchTerm: string, page: number): Promise<Item[]> => {
-    await new Promise((r) => setTimeout(r, 200));
+    await new Promise((r) => setTimeout(r, 300));
     const filtered = MOCK_ITEMS.filter((item) =>
         item.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
