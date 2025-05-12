@@ -24,4 +24,10 @@ describe('ResultsBox', () => {
         fireEvent.click(screen.getAllByRole('button')[0]);
         expect(onItemClick).toHaveBeenCalled();
     });
+    it('applies selected styles based on isItemSelected', () => {
+        const isItemSelected = (id: string) => id === '1';
+        render(<ResultsBox items={items} isItemSelected={isItemSelected} onItemClick={() => {}} />);
+        const selectedItem = screen.getByText('Item 1');
+        expect(selectedItem).toHaveClass('selected');
+    });
 });

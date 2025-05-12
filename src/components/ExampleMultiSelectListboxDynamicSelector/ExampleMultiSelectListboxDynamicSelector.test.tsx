@@ -128,4 +128,34 @@ describe('ExampleMultiSelectListboxDynamicSelector', () => {
             expect(searchItems).not.toHaveBeenCalled();
         });
     });
+    it('displays error message when getItemsById fails', async () => {
+        const failingGetItemsById = vi.fn().mockRejectedValue(new Error('Failed to fetch'));
+        render(
+            <ExampleMultiSelectListboxDynamicSelector
+                searchItems={searchItems}
+                getItemsById={failingGetItemsById}
+                initialSelectedIds={['1']}
+            />
+        );
+        await waitFor(() => {
+            expect(screen.getByText('Failed to load initial items.')).toBeInTheDocument();
+        });
+    });
+    it('displays error message when searchItems fails', async () => {
+        const failingSearchItems = vi.fn().mockRejectedValue(new Error('Search failed'));
+        render(
+            <ExampleMultiSelectListboxDynamicSelector
+                searchItems={failingSearchItems}
+                getItemsById={getItemsById}
+                initialSelectedIds={[]}
+            />
+        );
+
+        const input = screen.getByTestId('search-box');
+        fireEvent.change(input, { target: { value: 'test' } });
+
+        await waitFor(() => {
+            expect(screen.getByText('Failed to fetch search results.')).toBeInTheDocument();
+        });
+    });
 });

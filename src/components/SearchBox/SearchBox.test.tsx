@@ -16,4 +16,12 @@ describe('SearchBox', () => {
         fireEvent.change(screen.getByPlaceholderText('Search...'), { target: { value: 'foo' } });
         expect(onChange).toHaveBeenCalled();
     });
+    it('updates input value when value prop changes', () => {
+        const { rerender } = render(<SearchBox value="initial" onChange={() => {}} />);
+        const input = screen.getByPlaceholderText('Search...');
+        expect(input).toHaveValue('initial');
+
+        rerender(<SearchBox value="updated" onChange={() => {}} />);
+        expect(input).toHaveValue('updated');
+    });
 });

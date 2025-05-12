@@ -26,4 +26,9 @@ describe('ItemButton', () => {
         fireEvent.click(screen.getByRole('button'));
         expect(onClick).toHaveBeenCalledWith(item);
     });
+    it('applies selected class when selected is true', () => {
+        render(<ItemButton item={item} selected={true} onClick={() => {}} />);
+        const button = screen.getByRole('button');
+        expect(button).toHaveClass('selected');
+    });
 });
