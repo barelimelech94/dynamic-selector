@@ -88,6 +88,8 @@ describe('ExampleMultiSelectListboxDynamicSelector', () => {
             />
         );
 
+        const input = screen.getByTestId('search-box');
+        fireEvent.change(input, { target: { value: 'test' } });
         const item = await screen.findByText('Item 1');
         fireEvent.click(item); // toggles selection
     });
@@ -100,6 +102,8 @@ describe('ExampleMultiSelectListboxDynamicSelector', () => {
             />
         );
 
+        const input = screen.getByTestId('search-box');
+        fireEvent.change(input, { target: { value: 'test' } });
         await screen.findByText('Item 1');
         const showMoreButtons = screen.getAllByRole('button', { name: 'Show More' });
         // The real component's button is the last one rendered
@@ -107,7 +111,21 @@ describe('ExampleMultiSelectListboxDynamicSelector', () => {
         fireEvent.click(showMoreBtn);
 
         await waitFor(() => {
-            expect(searchItems).toHaveBeenCalledWith('', 1);
+            expect(searchItems).toHaveBeenCalledWith('test', 1);
+        });
+    });
+    it('does not fetch items when search is empty (except pre-selected)', async () => {
+        render(
+            <ExampleMultiSelectListboxDynamicSelector
+                searchItems={searchItems}
+                getItemsById={getItemsById}
+                initialSelectedIds={['1']}
+            />
+        );
+        // Should only call getItemsById for initial selection, not searchItems
+        await waitFor(() => {
+            expect(getItemsById).toHaveBeenCalledWith(['1']);
+            expect(searchItems).not.toHaveBeenCalled();
         });
     });
 });
