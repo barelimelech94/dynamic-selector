@@ -5,7 +5,7 @@
     width: 100%;
     padding: 0.3rem 1rem;
     border: 1px solid var(--secondary-color);
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     background-color: var(--background-color);
     cursor: pointer;
     margin-bottom: 0.25rem;

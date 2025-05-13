@@ -5,6 +5,7 @@
     --text-color: #212121;
     --button-hover-color: #b4eeb7;
     --disabled-color: #bdbdbd;
+    --error-message-color: #888;
 }
 
 body {

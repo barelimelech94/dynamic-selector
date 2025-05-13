@@ -3,6 +3,7 @@ import { PAGE_SIZE, MOCK_ITEMS } from '../utils/config.ts';
 
 export const mockSearchItems = async (searchTerm: string, page: number): Promise<Item[]> => {
     await new Promise((r) => setTimeout(r, 250));
+    // throw new Error('Simulated error');
     const filtered = MOCK_ITEMS.filter((item) =>
         item.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -11,5 +12,6 @@ export const mockSearchItems = async (searchTerm: string, page: number): Promise
 
 export const mockGetItemsById = async (ids: string[]): Promise<Item[]> => {
     await new Promise((r) => setTimeout(r, 200));
+    // throw new Error('Simulated error');
     return MOCK_ITEMS.filter((item) => ids.includes(item.value));
 };

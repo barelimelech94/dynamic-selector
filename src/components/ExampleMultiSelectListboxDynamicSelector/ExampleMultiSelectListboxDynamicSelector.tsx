@@ -122,6 +122,7 @@ const ExampleMultiSelectListboxDynamicSelector: React.FC<
             />
             <SearchBox value={searchTerm} onChange={handleSearchChange} />
             {error && <div className="error-message">{error}</div>}
+
             <ResultsBox
                 items={combinedItems}
                 isItemSelected={isItemSelected}

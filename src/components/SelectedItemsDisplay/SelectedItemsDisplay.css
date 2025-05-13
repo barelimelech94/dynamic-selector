@@ -1,12 +1,16 @@
-.display-items-container {
-    display: flex;
-    flex-wrap: wrap;
+.selected-items-display {
     gap: 0.3rem;
     width: 100%;
-    border: 1px solid var(--secondary-color);
+    height: 3.75rem;
+    padding-right: 0.2rem;
+    /* border: 1px solid var(--secondary-color); */
+    border: none;
     box-sizing: border-box;
     overflow-y: auto;
-    max-height: 65px;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    align-content: flex-start;
+    align-items: flex-end;
 }
 
 .selected-item {
@@ -16,4 +20,12 @@
     color: #fff;
     padding: 0.3rem 0.75rem;
     border-radius: 1rem;
+    cursor: pointer;
+}
+
+.no-items-message {
+    text-align: center;
+    color: var(--error-message-color);
+    font-weight: bold;
+    font-style: italic;
 }
