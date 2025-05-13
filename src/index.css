@@ -1,10 +1,10 @@
 :root {
-    --primary-color: #4caf50;
-    --secondary-color: #1a371b;
-    --background-color: #fff;
-    --text-color: #212121;
-    --button-hover-color: #b4eeb7;
-    --disabled-color: #bdbdbd;
+    --primary-color: #2b7cc7;
+    --secondary-color: #003b7a;
+    --background-color: #ffffff;
+    --text-color: #222222;
+    --button-hover-color: #5ab4ff;
+    --disabled-color: #b9c4d1;
     --error-message-color: #888;
 }
 
