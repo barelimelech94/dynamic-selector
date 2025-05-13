@@ -25,3 +25,8 @@ export type ResultsBoxProps = {
     isItemSelected: (value: string) => boolean;
     onItemClick: (value: string) => void;
 };
+
+export type SelectedItemsDisplayProps = {
+    selectedItems: (Item | undefined)[];
+    onRemove: (id: string) => void;
+};

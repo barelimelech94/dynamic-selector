@@ -1,0 +1,19 @@
+.display-items-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    width: 100%;
+    border: 1px solid var(--secondary-color);
+    box-sizing: border-box;
+    overflow-y: auto;
+    max-height: 65px;
+}
+
+.selected-item {
+    max-width: fit-content;
+    background-color: var(--primary-color);
+    border: none;
+    color: #fff;
+    padding: 0.3rem 0.75rem;
+    border-radius: 1rem;
+}
