@@ -71,7 +71,7 @@ const ExampleMultiSelectListboxDynamicSelector: React.FC<
             return;
         }
         console.log('Search term changed:', debouncedSearchTerm);
-        setItems([]);
+
         setPage(0);
         fetchItems(debouncedSearchTerm, 0, false);
     }, [debouncedSearchTerm, fetchItems]);
@@ -120,7 +120,11 @@ const ExampleMultiSelectListboxDynamicSelector: React.FC<
             {loading ? (
                 <LoadingIndicator />
             ) : (
-                <button className="show-more-btn" onClick={handleShowMoreClick} disabled={!hasMore}>
+                <button
+                    className="show-more-btn"
+                    onClick={handleShowMoreClick}
+                    disabled={!hasMore || !debouncedSearchTerm}
+                >
                     Show More
                 </button>
             )}
