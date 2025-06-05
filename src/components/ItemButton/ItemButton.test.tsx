@@ -1,6 +1,7 @@
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import ItemButton from './ItemButton';
 import { vi } from 'vitest';
+import styles from './ItemButton.module.css';
 
 describe('ItemButton', () => {
     const item = { value: '1', name: 'Test Item' };
@@ -29,6 +30,6 @@ describe('ItemButton', () => {
     it('applies selected class when selected is true', () => {
         render(<ItemButton item={item} selected={true} onClick={() => {}} />);
         const button = screen.getByRole('button');
-        expect(button).toHaveClass('selected');
+        expect(button).toHaveClass(styles.selected);
     });
 });

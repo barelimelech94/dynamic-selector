@@ -18,7 +18,7 @@ vi.mock('../ResultsBox/ResultsBox', () => ({
     default: ({ items, onItemClick }: ResultsBoxProps) => (
         <div data-testid="results-box">
             {items.map((item) => (
-                <button key={item.value} onClick={() => onItemClick(item.value)}>
+                <button key={item.value} onClick={() => onItemClick(item)}>
                     {item.name}
                 </button>
             ))}

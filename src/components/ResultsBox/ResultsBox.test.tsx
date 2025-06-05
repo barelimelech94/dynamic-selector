@@ -1,6 +1,7 @@
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import ResultsBox from './ResultsBox';
 import { vi } from 'vitest';
+import styles from '../ItemButton/ItemButton.module.css';
 
 describe('ResultsBox', () => {
     const items = [
@@ -27,7 +28,7 @@ describe('ResultsBox', () => {
     it('applies selected styles based on isItemSelected', () => {
         const isItemSelected = (id: string) => id === '1';
         render(<ResultsBox items={items} isItemSelected={isItemSelected} onItemClick={() => {}} />);
-        const selectedItem = screen.getByText('Item 1');
-        expect(selectedItem).toHaveClass('selected');
+        const selectedButton = screen.getByText('Item 1');
+        expect(selectedButton).toHaveClass(styles.itemButton, styles.selected);
     });
 });

@@ -1,6 +1,7 @@
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import SearchBox from './SearchBox';
 import { vi } from 'vitest';
+import styles from './SearchBox.module.css';
 
 describe('SearchBox', () => {
     afterEach(() => {
@@ -8,7 +9,9 @@ describe('SearchBox', () => {
     });
     it('renders input with placeholder', () => {
         render(<SearchBox value="" onChange={() => {}} />);
-        expect(screen.getByPlaceholderText('Search...')).toBeInTheDocument();
+        const input = screen.getByPlaceholderText('Search...');
+        expect(input).toBeInTheDocument();
+        expect(input).toHaveClass(styles.searchBox);
     });
     it('calls onChange when typing', () => {
         const onChange = vi.fn();
