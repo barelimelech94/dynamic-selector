@@ -37,17 +37,19 @@ const ExampleMultiSelectListboxDynamicSelector: React.FC<
                 isItemSelected={isItemSelected}
                 onItemClick={toggleSelection}
             />
-            {loading ? (
-                <LoadingIndicator />
-            ) : (
-                <button
-                    className={styles.showMoreBtn}
-                    onClick={handleShowMoreClick}
-                    disabled={!hasMore || !debouncedSearchTerm}
-                >
-                    Show More
-                </button>
-            )}
+            <div className={styles.actionContainer}>
+                {loading ? (
+                    <LoadingIndicator />
+                ) : (
+                    <button
+                        className={styles.showMoreBtn}
+                        onClick={handleShowMoreClick}
+                        disabled={!hasMore || !debouncedSearchTerm}
+                    >
+                        Show More
+                    </button>
+                )}
+            </div>
         </section>
     );
 };
