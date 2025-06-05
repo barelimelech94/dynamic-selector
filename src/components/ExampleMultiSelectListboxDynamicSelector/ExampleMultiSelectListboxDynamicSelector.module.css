@@ -1,4 +1,4 @@
-.dynamic-selector-container {
+.dynamicSelectorContainer {
     width: 340px;
     margin: 0 auto;
     padding: 1rem;
@@ -6,7 +6,7 @@
     border-radius: 0.5rem;
 }
 
-.show-more-btn {
+.showMoreBtn {
     width: 50%;
     padding: 0.5rem;
     background-color: var(--primary-color);
@@ -18,19 +18,19 @@
     margin: 1.25rem auto 0;
 }
 
-.show-more-btn:disabled {
+.showMoreBtn:disabled {
     background-color: var(--disabled-color);
     cursor: not-allowed;
 }
 
-.dynamic-selector-title {
+.dynamicSelectorTitle {
     text-align: center;
     font-size: 2rem;
     color: var(--primary-color);
     font-weight: bold;
 }
 
-.error-message {
+.errorMessage {
     color: var(--error-message-color);
     margin: 8px 0;
     font-weight: bold;

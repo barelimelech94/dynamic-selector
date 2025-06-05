@@ -1,6 +1,6 @@
 import React from 'react';
-import './LoadingIndicator.css';
+import styles from './LoadingIndicator.module.css';
 
-const LoadingIndicator: React.FC = () => <div className="spinner" role="status"></div>;
+const LoadingIndicator: React.FC = () => <div className={styles.spinner} role="status"></div>;
 
 export default LoadingIndicator;

@@ -1,16 +1,16 @@
 import React from 'react';
-import './ItemButton.css';
+import styles from './ItemButton.module.css';
 import type { ItemButtonProps } from '../../utils/types';
 
 const ItemButton: React.FC<ItemButtonProps> = React.memo(({ item, selected, onClick }) => {
     return (
         <button
             type="button"
-            className={`item-button${selected ? ' selected' : ''}`}
+            className={`${styles.itemButton}${selected ? ' ' + styles.selected : ''}`}
             onClick={() => onClick(item)}
         >
             {item.name}
-            <span className="item-button-icon">{selected ? '\u2713' : '+'}</span>
+            <span className={styles.itemButtonIcon}>{selected ? '\u2713' : '+'}</span>
         </button>
     );
 });

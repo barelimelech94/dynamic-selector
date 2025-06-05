@@ -4,7 +4,7 @@ import useDynamicSelector from '../../hooks/useDynamicSelector';
 import SearchBox from '../SearchBox/SearchBox';
 import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
 import ResultsBox from '../ResultsBox/ResultsBox';
-import './ExampleMultiSelectListboxDynamicSelector.css';
+import styles from './ExampleMultiSelectListboxDynamicSelector.module.css';
 import SelectedItemsDisplay from '../SelectedItemsDisplay/SelectedItemsDisplay';
 
 const ExampleMultiSelectListboxDynamicSelector: React.FC<
@@ -26,11 +26,11 @@ const ExampleMultiSelectListboxDynamicSelector: React.FC<
 
     // console.count('Main render count');
     return (
-        <section className="dynamic-selector-container">
-            <h1 className="dynamic-selector-title">Dynamic Selector</h1>
+        <section className={styles.dynamicSelectorContainer}>
+            <h1 className={styles.dynamicSelectorTitle}>Dynamic Selector</h1>
             <SelectedItemsDisplay selectedItems={selectedItems} onRemove={toggleSelection} />
             <SearchBox value={searchTerm} onChange={handleSearchChange} />
-            {error && <div className="error-message">{error}</div>}
+            {error && <div className={styles.errorMessage}>{error}</div>}
 
             <ResultsBox
                 items={combinedItems}
@@ -41,7 +41,7 @@ const ExampleMultiSelectListboxDynamicSelector: React.FC<
                 <LoadingIndicator />
             ) : (
                 <button
-                    className="show-more-btn"
+                    className={styles.showMoreBtn}
                     onClick={handleShowMoreClick}
                     disabled={!hasMore || !debouncedSearchTerm}
                 >

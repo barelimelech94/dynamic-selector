@@ -1,4 +1,4 @@
-.item-button {
+.itemButton {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,11 +11,12 @@
     margin-bottom: 0.25rem;
 }
 
-.item-button.selected {
+.selected {
     background-color: var(--primary-color);
     color: #fff;
 }
 
-.item-button-icon {
+.itemButtonIcon {
     font-size: 1.2rem;
+    line-height: 1;
 }

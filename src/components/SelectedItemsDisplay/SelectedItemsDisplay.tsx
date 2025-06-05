@@ -1,24 +1,22 @@
 import React from 'react';
-import './SelectedItemsDisplay.css';
-import type { Item, SelectedItemsDisplayProps } from '../../utils/types';
+import styles from './SelectedItemsDisplay.module.css';
+import type { SelectedItemsDisplayProps } from '../../utils/types';
 
 const SelectedItemsDisplay: React.FC<SelectedItemsDisplayProps> = ({ selectedItems, onRemove }) => {
     return (
-        <div className="selected-items-display">
+        <div className={styles.selectedItemsDisplay}>
             {selectedItems.size === 0 ? (
-                <p className="no-items-message">No items selected yet</p>
+                <p className={styles.noItemsMessage}>No items selected yet</p>
             ) : (
-                Array.from(selectedItems, ([value, name]): Item => ({ value, name })).map(
-                    (item) => (
-                        <button
-                            key={item.value}
-                            className="selected-item"
-                            onClick={() => onRemove(item)}
-                        >
-                            {item.name} x
-                        </button>
-                    )
-                )
+                Array.from(selectedItems.entries()).map(([value, name]) => (
+                    <button
+                        key={value}
+                        className={styles.selectedItem}
+                        onClick={() => onRemove({ value, name })}
+                    >
+                        {name} x
+                    </button>
+                ))
             )}
         </div>
     );
