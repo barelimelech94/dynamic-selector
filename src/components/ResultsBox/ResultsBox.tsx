@@ -13,7 +13,7 @@ const ResultsBox: React.FC<ResultsBoxProps> = React.memo(
                         <ItemButton
                             item={item}
                             selected={isItemSelected(item.value)}
-                            onClick={() => onItemClick(item.value)}
+                            onClick={() => onItemClick(item)}
                         />
                     </div>
                 ))}

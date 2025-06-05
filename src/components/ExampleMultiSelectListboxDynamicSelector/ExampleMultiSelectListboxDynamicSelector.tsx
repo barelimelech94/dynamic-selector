@@ -24,6 +24,7 @@ const ExampleMultiSelectListboxDynamicSelector: React.FC<
         debouncedSearchTerm,
     } = useDynamicSelector(props);
 
+    // console.count('Main render count');
     return (
         <section className="dynamic-selector-container">
             <h1 className="dynamic-selector-title">Dynamic Selector</h1>

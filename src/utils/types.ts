@@ -23,10 +23,10 @@ export type ItemButtonProps = {
 export type ResultsBoxProps = {
     items: Item[];
     isItemSelected: (value: string) => boolean;
-    onItemClick: (value: string) => void;
+    onItemClick: (item: Item) => void;
 };
 
 export type SelectedItemsDisplayProps = {
-    selectedItems: (Item | undefined)[];
-    onRemove: (id: string) => void;
+    selectedItems: Map<string, string>;
+    onRemove: (item: Item) => void;
 };
